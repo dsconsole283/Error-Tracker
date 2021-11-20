@@ -1,0 +1,44 @@
+﻿<Window x:Class="SlotErrorTrackerUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SlotErrorTrackerUI"
+        mc:Ignorable="d"
+        FontSize="12"
+        Title="Error Tracker 1.0" Height="550" Width="800"
+        Background="DarkGray">
+    <Border Margin="5" Background="PowderBlue">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label>Select Manufacturer</Label>
+                    <ComboBox Margin="5">
+                        <ComboBoxItem>AGS</ComboBoxItem>
+                    </ComboBox>
+                    <Label>Select Error Description</Label>
+                    <ComboBox Margin="5">
+                        <ComboBoxItem>Code 1002</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label>Select Cabinet</Label>
+                    <ComboBox Margin="5">
+                        <ComboBoxItem>Orion</ComboBoxItem>
+                    </ComboBox>
+                    <Label>Potential Solutions</Label>
+                    <ListView Margin="5">
+                        <ListViewItem>RAM clear</ListViewItem>
+                        <ListViewItem>Replace software</ListViewItem>
+                        <ListViewItem>Get rid of it</ListViewItem>
+                        <ListViewItem>Never buy AGS cabinets</ListViewItem>
+                        </ListView>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
