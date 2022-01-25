@@ -23,14 +23,14 @@ namespace SlotErrorTrackerConsoleUI
             {
                 var sql = services.GetRequiredService<ISQLData>();
 
-                //Console.WriteLine(GetConnectionString());
+                Console.WriteLine(GetConnectionString());
 
                 //sql.CreateManufacturer("BALLY");
 
-                //foreach (var item in sql.GetManufacturers())
-                //{
-                //    Console.WriteLine(item.Manufacturer);
-                //}
+                foreach (var item in sql.GetManufacturers())
+                {
+                    Console.WriteLine(item.Manufacturer);
+                }
 
                 //sql.CreateCabinetByManufacturer("ORION", "AGS");
                 //foreach (var item in sql.GetCabinetsByManufacturer("ARISTOCRAT"))
@@ -54,6 +54,8 @@ namespace SlotErrorTrackerConsoleUI
                 Console.WriteLine($"An error occurred: { ex.Message }");
                 Console.ReadLine();
             }
+
+            Console.ReadLine();
         }
 
         static IHostBuilder CreateHostBuilder(string[] args) =>
