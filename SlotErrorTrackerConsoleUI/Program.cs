@@ -23,7 +23,7 @@ namespace SlotErrorTrackerConsoleUI
             {
                 var sql = services.GetRequiredService<ISQLData>();
 
-                Console.WriteLine(GetConnectionString());
+                //Console.WriteLine(GetConnectionString());
 
                 //sql.CreateManufacturer("BALLY");
 
