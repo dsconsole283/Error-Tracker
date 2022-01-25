@@ -33,16 +33,21 @@ namespace SlotErrorTrackerConsoleUI
                 }
 
                 //sql.CreateCabinetByManufacturer("ORION", "AGS");
+
                 //foreach (var item in sql.GetCabinetsByManufacturer("ARISTOCRAT"))
                 //{
                 //    Console.WriteLine(item.Cabinet);
                 //}
+
                 //sql.CreateErrorDescriptionByCabinet("Memory error", "ORION");
+
                 //foreach (var item in sql.GetErrorsByCabinet("ORION"))
                 //{
                 //    Console.WriteLine(item.Description);
                 //}
+
                 //sql.CreateSolutionByErrorDescription("Replace logic board", "No signal", "ORION");
+
                 //foreach (var item in sql.GetSolutionsByErrorDescription("No signal", "ORION"))
                 //{
                 //    Console.WriteLine(item.Solution);
