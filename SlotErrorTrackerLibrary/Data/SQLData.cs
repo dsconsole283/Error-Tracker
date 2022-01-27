@@ -6,11 +6,11 @@ using System.Text;
 
 namespace SlotErrorTrackerLibrary.Data
 {
-    
+
     public class SQLData : ISQLData
     {
         private readonly ISQLDataAccess _db;
-        private string Key;
+        private readonly string Key;
 
         public SQLData(ISQLDataAccess db)
         {
@@ -39,7 +39,7 @@ namespace SlotErrorTrackerLibrary.Data
                           Key,
                           true);
         }
-        
+
         public void CreateErrorDescriptionByCabinet(string description, string cabinet)
         {
             _db.SaveData("dbo.spCreateEDByCabinet",
