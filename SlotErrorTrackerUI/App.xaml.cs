@@ -27,6 +27,12 @@ namespace SlotErrorTrackerUI
             services.AddTransient<ISQLDataAccess, SQLDataAccess>();
             services.AddTransient<ISQLData, SQLData>();
 
+            var builder = new ConfigurationBuilder();
+
+            IConfiguration config = builder.Build();
+
+            services.AddSingleton(config);
+
             var serviceProvider = services.BuildServiceProvider();
             var mainWindow = serviceProvider.GetService<MainWindow>();
 
