@@ -21,14 +21,14 @@ namespace SlotErrorTrackerConsoleUI
             {
                 var sql = services.GetRequiredService<ISQLData>();
 
-                //sql.CreateManufacturer("BALLY");
+                //sql.CreateManufacturer("ARISTOCRAT");
 
                 foreach (var item in sql.GetManufacturers())
                 {
                     Console.WriteLine(item.Manufacturer);
                 }
 
-                //sql.CreateCabinetByManufacturer("ORION", "AGS");
+                //sql.CreateCabinetByManufacturer("Arc", "ARISTOCRAT");
 
                 //foreach (var item in sql.GetCabinetsByManufacturer("ARISTOCRAT"))
                 //{
@@ -42,12 +42,14 @@ namespace SlotErrorTrackerConsoleUI
                 //    Console.WriteLine(item.Description);
                 //}
 
-                //sql.CreateSolutionByErrorDescription("Replace logic board", "No signal", "ORION");
+                //sql.CreateSolutionByErrorDescription("RAM clear", "Memory Error", "ORION");
 
-                //foreach (var item in sql.GetSolutionsByErrorDescription("No signal", "ORION"))
+                //foreach (var item in sql.GetSolutionsByErrorDescription("Memory Error", "ORION"))
                 //{
                 //    Console.WriteLine(item.Solution);
                 //}
+
+                //sql.CreateErrorDescription("System launcher not found");
             }
             catch (Exception ex)
             {
