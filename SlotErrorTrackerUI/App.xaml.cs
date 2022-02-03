@@ -20,25 +20,27 @@ namespace SlotErrorTrackerUI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+            InitializeComponent();
 
-            var services = new ServiceCollection();
-            services.AddTransient<MainWindow>();
-            services.AddTransient<ISQLDataAccess, SQLDataAccess>();
-            services.AddTransient<ISQLData, SQLData>();
+            //base.OnStartup(e);
 
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+            //var services = new ServiceCollection();
+            //services.AddTransient<MainWindow>();
+            //services.AddTransient<ISQLDataAccess, SQLDataAccess>();
+            //services.AddTransient<ISQLData, SQLData>();
 
-            IConfiguration config = builder.Build();
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json");
 
-            services.AddSingleton(config);
+            //IConfiguration config = builder.Build();
 
-            var serviceProvider = services.BuildServiceProvider();
-            var mainWindow = serviceProvider.GetService<MainWindow>();
+            //services.AddSingleton(config);
 
-            mainWindow.Show();
+            //var serviceProvider = services.BuildServiceProvider();
+            //var mainWindow = serviceProvider.GetService<MainWindow>();
+
+            //mainWindow.Show();
         }
     }
 }
