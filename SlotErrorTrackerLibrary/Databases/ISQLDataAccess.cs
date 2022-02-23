@@ -4,13 +4,7 @@ namespace SlotErrorTrackerLibrary.Databases
 {
     public interface ISQLDataAccess
     {
-        List<T> LoadData<T, U>(string sqlStatement,
-                               U parameters,
-                               string key,
-                               bool isStoredProcedure = false);
-        void SaveData<T>(string sqlStatement,
-                         T parameters,
-                         string key,
-                         bool isStoredProcedure = false);
+        List<T> LoadData<T, U>(string sqlStatement, U parameters, string connectionString, bool isStoredProcedure = false);
+        void SaveData<T>(string sqlStatement, T parameters, string connectionString, bool isStoredProcedure = false);
     }
 }

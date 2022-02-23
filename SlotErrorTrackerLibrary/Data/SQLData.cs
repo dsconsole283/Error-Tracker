@@ -1,7 +1,10 @@
-﻿using SlotErrorTrackerLibrary.Databases;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using SlotErrorTrackerLibrary.Databases;
 using SlotErrorTrackerLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SlotErrorTrackerLibrary.Data
 {
@@ -9,13 +12,23 @@ namespace SlotErrorTrackerLibrary.Data
     public class SQLData : ISQLData
     {
         private readonly ISQLDataAccess _db;
-        private readonly string Key;
+        private readonly SecretClient _secretClient;
+        private readonly string _connectionString;
 
         public SQLData(ISQLDataAccess db)
         {
             _db = db;
 
-            Key = "ErrorTracker:Settings:ConnectionString";
+            string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+
+            _secretClient = client;
+
+            var response = RetrieveSecret(_secretClient);
+            var result = response.Result;
+            _connectionString = result.Value;
         }
 
         public SQLData()
@@ -23,11 +36,19 @@ namespace SlotErrorTrackerLibrary.Data
 
         }
 
+        public async Task<KeyVaultSecret> RetrieveSecret(SecretClient secretClient)
+        {
+            secretClient = _secretClient;
+            var result = await secretClient.GetSecretAsync("db-connection");
+
+            return result;
+        }
+
         public List<ManufacturerModel> GetManufacturers()
         {
             return _db.LoadData<ManufacturerModel, dynamic>("dbo.spGetManufacturers",
                                                             new { },
-                                                            Key,
+                                                            _connectionString,
                                                             true);
         }
 
@@ -36,7 +57,7 @@ namespace SlotErrorTrackerLibrary.Data
         {
             _db.SaveData("dbo.spCreateCabinetByManufacturer",
                           new { Cabinet = cabinet, Manufacturer = manufacturer },
-                          Key,
+                          _connectionString,
                           true);
         }
 
@@ -45,7 +66,7 @@ namespace SlotErrorTrackerLibrary.Data
         {
             _db.SaveData("dbo.spCreateEDByCabinet",
                          new { Description = description, Cabinet = cabinet },
-                         Key,
+                         _connectionString,
                          true);
         }
 
@@ -55,7 +76,7 @@ namespace SlotErrorTrackerLibrary.Data
         {
             _db.SaveData("dbo.spCreateSolutionByED",
                          new { Solution = solution, Description = description, Cabinet = cabinet },
-                         Key,
+                         _connectionString,
                          true);
         }
 
@@ -63,7 +84,7 @@ namespace SlotErrorTrackerLibrary.Data
         {
             return _db.LoadData<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
                                                                 new { Manufacturer = manufacturer },
-                                                                Key,
+                                                                _connectionString,
                                                                 true);
         }
 
@@ -71,7 +92,7 @@ namespace SlotErrorTrackerLibrary.Data
         {
             return _db.LoadData<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
                                                      new { Cabinet = cabinet },
-                                                     Key,
+                                                     _connectionString,
                                                      true);
         }
 
@@ -80,23 +101,23 @@ namespace SlotErrorTrackerLibrary.Data
         {
             return _db.LoadData<SolutionModel, dynamic>("dbo.spGetSolutionByErrorDescription",
                                                         new { Description = description, Cabinet = cabinet },
-                                                        Key,
+                                                        _connectionString,
                                                         true);
         }
 
         public void CreateManufacturer(string manufacturer)
         {
-            _db.SaveData("dbo.spCreateManufacturer", new { manufacturer }, Key, true);
+            _db.SaveData("dbo.spCreateManufacturer", new { manufacturer }, _connectionString, true);
         }
 
         public void CreateErrorDescription(string errorDescription)
         {
-            _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, Key, true);
+            _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
         }
 
         public void CreatePotentialSolution(string potentialSolution)
         {
-            _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, Key, true);
+            _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, _connectionString, true);
         }
 
         public void DeleteManufacturer(string manufacturer)

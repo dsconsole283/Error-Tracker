@@ -1,6 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,24 +8,16 @@ namespace SlotErrorTrackerLibrary.Databases
 {
     public class SQLDataAccess : ISQLDataAccess
     {
-        private readonly IConfiguration _config;
-
-        public SQLDataAccess(IConfiguration configuration)
+        public SQLDataAccess()
         {
-            var builder = new ConfigurationBuilder().AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
 
-            configuration = builder.Build();
-
-            _config = configuration;
         }
 
         public List<T> LoadData<T, U>(string sqlStatement,
                                       U parameters,
-                                      string key,
+                                      string connectionString,
                                       bool isStoredProcedure = false)
         {
-
-            string connectionString = _config.GetSection(key).Value;
 
             CommandType commandType = CommandType.Text;
 
@@ -45,11 +35,9 @@ namespace SlotErrorTrackerLibrary.Databases
 
         public void SaveData<T>(string sqlStatement,
                                 T parameters,
-                                string key,
+                                string connectionString,
                                 bool isStoredProcedure = false)
         {
-
-            string connectionString = _config.GetSection(key).Value;
 
             CommandType commandType = CommandType.Text;
 

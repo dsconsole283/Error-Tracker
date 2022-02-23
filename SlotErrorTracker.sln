@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotErrorTrackerLibrary.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotErrorTrackerConsoleUI", "SlotErrorTrackerConsoleUI\SlotErrorTrackerConsoleUI.csproj", "{C393CEAA-7070-466B-A3A2-F1A2F1449CFC}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PotentialSolutionsDB", "PotentialSolutionsDB\PotentialSolutionsDB.sqlproj", "{184E2215-7DA7-4CE7-86DE-691FAB204D4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{C393CEAA-7070-466B-A3A2-F1A2F1449CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C393CEAA-7070-466B-A3A2-F1A2F1449CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C393CEAA-7070-466B-A3A2-F1A2F1449CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
