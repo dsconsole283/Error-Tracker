@@ -1,10 +1,7 @@
-﻿using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
-using SlotErrorTrackerLibrary.Databases;
+﻿using SlotErrorTrackerLibrary.Databases;
 using SlotErrorTrackerLibrary.Models;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SlotErrorTrackerLibrary.Data
 {
@@ -12,36 +9,11 @@ namespace SlotErrorTrackerLibrary.Data
     public class SQLData : ISQLData
     {
         private readonly ISQLDataAccess _db;
-        private readonly SecretClient _secretClient;
         private readonly string _connectionString;
 
         public SQLData(ISQLDataAccess db)
         {
             _db = db;
-
-            string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
-            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
-
-            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-
-            _secretClient = client;
-
-            var response = RetrieveSecret(_secretClient);
-            var result = response.Result;
-            _connectionString = result.Value;
-        }
-
-        public SQLData()
-        {
-
-        }
-
-        public async Task<KeyVaultSecret> RetrieveSecret(SecretClient secretClient)
-        {
-            secretClient = _secretClient;
-            var result = await secretClient.GetSecretAsync("db-connection");
-
-            return result;
         }
 
         public List<ManufacturerModel> GetManufacturers()

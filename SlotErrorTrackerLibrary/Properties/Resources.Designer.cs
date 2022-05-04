@@ -59,14 +59,5 @@ namespace SlotErrorTrackerLibrary.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to error-tracker-vault.
-        /// </summary>
-        internal static string KEY_VAULT_NAME {
-            get {
-                return ResourceManager.GetString("KEY_VAULT_NAME", resourceCulture);
-            }
-        }
     }
 }
