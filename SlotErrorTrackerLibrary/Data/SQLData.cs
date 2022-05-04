@@ -1,4 +1,5 @@
-﻿using SlotErrorTrackerLibrary.Databases;
+﻿using Microsoft.Extensions.Configuration;
+using SlotErrorTrackerLibrary.Databases;
 using SlotErrorTrackerLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,21 @@ namespace SlotErrorTrackerLibrary.Data
 
     public class SQLData : ISQLData
     {
-        private readonly ISQLDataAccess _db;
-        private readonly string _connectionString;
+        private readonly ISQLDataAccess _db = new SQLDataAccess();
+        private readonly IConfiguration _configuration;
+        private string _connectionString;
 
-        public SQLData(ISQLDataAccess db)
+        public SQLData(IConfiguration configuration)
         {
-            _db = db;
+            _configuration = configuration;
+            SetConnectionString();
+        }
+        public void SetConnectionString()
+        {
+            var resources = SlotErrorTrackerLibrary.Properties.Resources.ResourceManager;
+            string output = "";
+            output = resources.GetString("DefaultConnection");
+            _connectionString = output;
         }
 
         public List<ManufacturerModel> GetManufacturers()

@@ -59,5 +59,12 @@ namespace SlotErrorTrackerLibrary.Properties {
                 resourceCulture = value;
             }
         }
+        
+        
+        internal static string DefaultConnection {
+            get {
+                return ResourceManager.GetString("DefaultConnection", resourceCulture);
+            }
+        }
     }
 }

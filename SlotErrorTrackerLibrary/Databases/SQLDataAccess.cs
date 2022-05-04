@@ -8,11 +8,6 @@ namespace SlotErrorTrackerLibrary.Databases
 {
     public class SQLDataAccess : ISQLDataAccess
     {
-        public SQLDataAccess()
-        {
-
-        }
-
         public List<T> LoadData<T, U>(string sqlStatement,
                                       U parameters,
                                       string connectionString,

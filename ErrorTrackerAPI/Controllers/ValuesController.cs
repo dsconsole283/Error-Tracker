@@ -1,6 +1,7 @@
-﻿using ErrorTrackerAPI.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SlotErrorTrackerLibrary.Data;
+using SlotErrorTrackerLibrary.Models;
 
 namespace ErrorTrackerAPI.Controllers
 {
@@ -8,16 +9,17 @@ namespace ErrorTrackerAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly ISQLData data;
+
+        public ValuesController(ISQLData data)
+        {
+            this.data = data;
+        }
         [HttpGet(Name = "Get Manufacturers")]
         public List<ManufacturerModel> GetManufacturers()
         {
-            return new List<ManufacturerModel>() 
-            { 
-                new ManufacturerModel() 
-                { 
-                    Manufacturer = "Aristocrat"
-                } 
-            };            
+            List<ManufacturerModel> manufacturers = data.GetManufacturers();
+            return manufacturers;
         }
     }
 }

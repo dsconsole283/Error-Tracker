@@ -10,4 +10,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SlotErrorTrackerLibrary\SlotErrorTrackerLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

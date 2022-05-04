@@ -22,6 +22,7 @@ namespace SlotErrorTrackerLibrary.Data
         List<ErrorModel> GetErrorsByCabinet(string cabinet);
         List<ManufacturerModel> GetManufacturers();
         List<SolutionModel> GetSolutionsByErrorDescription(string description, string cabinet);
+        void SetConnectionString();
         void UpdateExistingCabinetByManufacturer(string cabinet, string manufacturer);
         void UpdateExistingErrorDescription(string errorDescription);
         void UpdateExistingErrorDescriptionByCabinet(string cabinet, string errorDescription);
