@@ -92,15 +92,15 @@ namespace SlotErrorTrackerLibrary.Data
             _db.SaveData("dbo.spCreateManufacturer", new { manufacturer }, _connectionString, true);
         }
 
-        public void CreateErrorDescription(string errorDescription)
-        {
-            _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
-        }
+        //public void CreateErrorDescription(string errorDescription)
+        //{
+        //    _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
+        //}
 
-        public void CreatePotentialSolution(string potentialSolution)
-        {
-            _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, _connectionString, true);
-        }
+        //public void CreatePotentialSolution(string potentialSolution)
+        //{
+        //    _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, _connectionString, true);
+        //}
 
         public void DeleteManufacturer(string manufacturer)
         {

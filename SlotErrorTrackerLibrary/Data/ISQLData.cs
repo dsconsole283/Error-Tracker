@@ -8,10 +8,10 @@ namespace SlotErrorTrackerLibrary.Data
         void AssignExistingErrorDescToCabinet(string cabinet, string errorDescription);
         void AssignExistingSolutionToErrorDesc(string potentialSolution, string errorDescription);
         void CreateCabinetByManufacturer(string cabinet, string manufacturer);
-        void CreateErrorDescription(string errorDescription);
+        //void CreateErrorDescription(string errorDescription);
         void CreateErrorDescriptionByCabinet(string description, string cabinet);
         void CreateManufacturer(string manufacturer);
-        void CreatePotentialSolution(string potentialSolution);
+        //void CreatePotentialSolution(string potentialSolution);
         void CreateSolutionByErrorDescription(string solution, string description, string cabinet);
         void DeleteCabinetByManufacturer(string cabinet, string manufacturer);
         void DeleteErrorDescription(string errorDescription);
