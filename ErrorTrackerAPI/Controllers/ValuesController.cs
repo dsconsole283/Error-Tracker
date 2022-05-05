@@ -15,11 +15,21 @@ namespace ErrorTrackerAPI.Controllers
         {
             this.data = data;
         }
-        [HttpGet(Name = "Get Manufacturers")]
+
+        [Route("/Get Manufacturers")]
+        [HttpGet]
         public List<ManufacturerModel> GetManufacturers()
         {
             List<ManufacturerModel> manufacturers = data.GetManufacturers();
             return manufacturers;
+        }
+
+        [Route("/Get Errors By Cabinet")]
+        [HttpGet]
+        public List<ErrorModel> GetErrorsByCabinet(string cabinet)
+        {
+            List<ErrorModel> errors = data.GetErrorsByCabinet(cabinet);
+            return errors;
         }
     }
 }
