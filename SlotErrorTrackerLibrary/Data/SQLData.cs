@@ -20,7 +20,7 @@ namespace SlotErrorTrackerLibrary.Data
         }
         public void SetConnectionString()
         {
-            var resources = SlotErrorTrackerLibrary.Properties.Resources.ResourceManager;
+            var resources = Properties.Resources.ResourceManager;
             string output = "";
             output = resources.GetString("DefaultConnection");
             _connectionString = output;
