@@ -3,6 +3,7 @@ using SlotErrorTrackerLibrary.Databases;
 using SlotErrorTrackerLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SlotErrorTrackerLibrary.Data
 {
@@ -26,18 +27,18 @@ namespace SlotErrorTrackerLibrary.Data
             _connectionString = output;
         }
 
-        public List<ManufacturerModel> GetManufacturers()
+        public async Task<List<ManufacturerModel>> GetManufacturers()
         {
-            return _db.LoadData<ManufacturerModel, dynamic>("dbo.spGetManufacturers",
+            return await _db.LoadDataAsync<ManufacturerModel, dynamic>("dbo.spGetManufacturers",
                                                             new { },
                                                             _connectionString,
                                                             true);
         }
 
-        public void CreateCabinetByManufacturer(string cabinet,
+        public async Task CreateCabinetByManufacturer(string cabinet,
                                                 string manufacturer)
         {
-            _db.SaveData("dbo.spCreateCabinetByManufacturer",
+            await _db.SaveDataAsync("dbo.spCreateCabinetByManufacturer",
                           new
                           {
                               Cabinet = cabinet.ToUpper(),
@@ -47,24 +48,24 @@ namespace SlotErrorTrackerLibrary.Data
                           true);
         }
 
-        public void CreateErrorDescriptionByCabinet(string description,
+        public async Task CreateErrorDescriptionByCabinet(string description,
                                                     string cabinet)
         {
-            _db.SaveData("dbo.spCreateEDByCabinet",
-                         new
-                         {
-                             Description = description,
-                             Cabinet = cabinet.ToUpper()
-                         },
-                         _connectionString,
-                         true);
+            await _db.SaveDataAsync("dbo.spCreateEDByCabinet",
+                          new
+                          {
+                              Description = description,
+                              Cabinet = cabinet.ToUpper()
+                          },
+                          _connectionString,
+                          true);
         }
 
-        public void CreateSolutionByErrorDescription(string solution,
+        public async Task CreateSolutionByErrorDescription(string solution,
                                                      string description,
                                                      string cabinet)
         {
-            _db.SaveData("dbo.spCreateSolutionByED",
+            await _db.SaveDataAsync("dbo.spCreateSolutionByED",
                          new
                          {
                              Solution = solution,
@@ -75,9 +76,9 @@ namespace SlotErrorTrackerLibrary.Data
                          true);
         }
 
-        public List<CabinetPlatformModel> GetCabinetsByManufacturer(string manufacturer)
+        public async Task<List<CabinetPlatformModel>> GetCabinetsByManufacturer(string manufacturer)
         {
-            return _db.LoadData<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
+            return await _db.LoadDataAsync<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
                                                                 new
                                                                 {
                                                                     Manufacturer = manufacturer.ToUpper()
@@ -86,9 +87,9 @@ namespace SlotErrorTrackerLibrary.Data
                                                                 true);
         }
 
-        public List<ErrorModel> GetErrorsByCabinet(string cabinet)
+        public async Task<List<ErrorModel>> GetErrorsByCabinet(string cabinet)
         {
-            return _db.LoadData<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
+            return await _db.LoadDataAsync<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
                                                      new
                                                      {
                                                          Cabinet = cabinet.ToUpper()
@@ -97,30 +98,30 @@ namespace SlotErrorTrackerLibrary.Data
                                                      true);
         }
 
-        public List<SolutionModel> GetSolutionsByErrorDescription(string description,
+        public async Task<List<SolutionModel>> GetSolutionsByErrorDescription(string description,
                                                                   string cabinet)
         {
-            return _db.LoadData<SolutionModel, dynamic>("dbo.spGetSolutionByErrorDescription",
+            return await _db.LoadDataAsync<SolutionModel, dynamic>("dbo.spGetSolutionByErrorDescription",
                                                         new { Description = description, Cabinet = cabinet },
                                                         _connectionString,
                                                         true);
         }
 
-        public void CreateManufacturer(string manufacturer)
+        public async Task CreateManufacturer(string manufacturer)
         {
-            _db.SaveData("dbo.spCreateManufacturer",
+            await _db.SaveDataAsync("dbo.spCreateManufacturer",
                          new { Manufacturer = manufacturer.ToUpper() },
                          _connectionString,
                          true);
         }
 
-        public void UpdateExistingErrorDescriptionByCabinet(string cabinet,
+        public async Task UpdateExistingErrorDescriptionByCabinet(string cabinet,
                                                             string errorDescription)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateExistingPotentialSolutionByErrorDesc(string potentialSolution,
+        public async Task UpdateExistingPotentialSolutionByErrorDesc(string potentialSolution,
                                                                string errorDescription)
         {
             throw new NotImplementedException();

@@ -20,7 +20,7 @@ namespace ErrorTrackerAPI.Controllers
         [HttpGet]
         public List<ManufacturerModel> GetManufacturers()
         {
-            List<ManufacturerModel> manufacturers = data.GetManufacturers();
+            List<ManufacturerModel> manufacturers = data.GetManufacturers().Result.ToList();
             return manufacturers;
         }
 
@@ -28,7 +28,7 @@ namespace ErrorTrackerAPI.Controllers
         [HttpGet]
         public List<ErrorModel> GetErrorsByCabinet(string cabinet)
         {
-            List<ErrorModel> errors = data.GetErrorsByCabinet(cabinet);
+            List<ErrorModel> errors = data.GetErrorsByCabinet(cabinet).Result.ToList();
             return errors;
         }
 
@@ -36,7 +36,7 @@ namespace ErrorTrackerAPI.Controllers
         [HttpGet]
         public List<CabinetPlatformModel> GetCabinetsByManufacturer(string manufacturer)
         {
-            List<CabinetPlatformModel> cabinets = data.GetCabinetsByManufacturer(manufacturer);
+            List<CabinetPlatformModel> cabinets = data.GetCabinetsByManufacturer(manufacturer).Result.ToList();
             return cabinets;
         }
 
@@ -44,7 +44,7 @@ namespace ErrorTrackerAPI.Controllers
         [HttpGet]
         public List<SolutionModel> GetSolutionByErrorDescription(string ed, string cabinet)
         {
-            List<SolutionModel> solutions = data.GetSolutionsByErrorDescription(ed, cabinet);
+            List<SolutionModel> solutions = data.GetSolutionsByErrorDescription(ed, cabinet).Result.ToList();
             return solutions;
         }
 

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SlotErrorTrackerLibrary.Databases
 {
     public class SQLDataAccess : ISQLDataAccess
     {
-        public List<T> LoadData<T, U>(string sqlStatement,
+        public async Task<List<T>> LoadDataAsync<T, U>(string sqlStatement,
                                       U parameters,
                                       string connectionString,
                                       bool isStoredProcedure = false)
@@ -23,12 +24,17 @@ namespace SlotErrorTrackerLibrary.Databases
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                List<T> rows = connection.Query<T>(sqlStatement, parameters, commandType: commandType).ToList();
-                return rows;
+                var rows = await connection.QueryAsync<T>(sqlStatement, parameters, commandType: commandType);
+                
+                List<T> result = new();
+
+                result = rows.ToList();
+                
+                return result;
             }
         }
 
-        public void SaveData<T>(string sqlStatement,
+        public async Task SaveDataAsync<T>(string sqlStatement,
                                 T parameters,
                                 string connectionString,
                                 bool isStoredProcedure = false)
@@ -43,7 +49,7 @@ namespace SlotErrorTrackerLibrary.Databases
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                connection.Execute(sqlStatement, parameters, commandType: commandType);
+                await connection.ExecuteAsync(sqlStatement, parameters, commandType: commandType);
             }
         }
     }
