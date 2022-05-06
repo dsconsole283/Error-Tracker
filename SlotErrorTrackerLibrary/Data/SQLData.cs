@@ -38,7 +38,11 @@ namespace SlotErrorTrackerLibrary.Data
                                                 string manufacturer)
         {
             _db.SaveData("dbo.spCreateCabinetByManufacturer",
-                          new { Cabinet = cabinet, Manufacturer = manufacturer },
+                          new 
+                          { 
+                              Cabinet = cabinet.ToUpper(), 
+                              Manufacturer = manufacturer.ToUpper() 
+                          },
                           _connectionString,
                           true);
         }
@@ -47,7 +51,11 @@ namespace SlotErrorTrackerLibrary.Data
                                                     string cabinet)
         {
             _db.SaveData("dbo.spCreateEDByCabinet",
-                         new { Description = description, Cabinet = cabinet },
+                         new 
+                         { 
+                             Description = description, 
+                             Cabinet = cabinet.ToUpper() 
+                         },
                          _connectionString,
                          true);
         }
@@ -57,7 +65,12 @@ namespace SlotErrorTrackerLibrary.Data
                                                      string cabinet)
         {
             _db.SaveData("dbo.spCreateSolutionByED",
-                         new { Solution = solution, Description = description, Cabinet = cabinet },
+                         new 
+                         { 
+                             Solution = solution, 
+                             Description = description, 
+                             Cabinet = cabinet.ToUpper() 
+                         },
                          _connectionString,
                          true);
         }
@@ -65,7 +78,10 @@ namespace SlotErrorTrackerLibrary.Data
         public List<CabinetPlatformModel> GetCabinetsByManufacturer(string manufacturer)
         {
             return _db.LoadData<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
-                                                                new { Manufacturer = manufacturer },
+                                                                new 
+                                                                { 
+                                                                    Manufacturer = manufacturer.ToUpper() 
+                                                                },
                                                                 _connectionString,
                                                                 true);
         }
@@ -73,7 +89,10 @@ namespace SlotErrorTrackerLibrary.Data
         public List<ErrorModel> GetErrorsByCabinet(string cabinet)
         {
             return _db.LoadData<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
-                                                     new { Cabinet = cabinet },
+                                                     new 
+                                                     { 
+                                                         Cabinet = cabinet.ToUpper() 
+                                                     },
                                                      _connectionString,
                                                      true);
         }
@@ -89,7 +108,10 @@ namespace SlotErrorTrackerLibrary.Data
 
         public void CreateManufacturer(string manufacturer)
         {
-            _db.SaveData("dbo.spCreateManufacturer", new { manufacturer }, _connectionString, true);
+            _db.SaveData("dbo.spCreateManufacturer",
+                         new { Manufacturer = manufacturer.ToUpper() },
+                         _connectionString,
+                         true);
         }
 
         //public void CreateErrorDescription(string errorDescription)
