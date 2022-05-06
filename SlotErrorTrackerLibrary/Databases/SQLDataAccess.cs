@@ -17,7 +17,7 @@ namespace SlotErrorTrackerLibrary.Databases
 
             CommandType commandType = CommandType.Text;
 
-            if (isStoredProcedure == true)
+            if (isStoredProcedure)
             {
                 commandType = CommandType.StoredProcedure;
             }
@@ -42,7 +42,7 @@ namespace SlotErrorTrackerLibrary.Databases
 
             CommandType commandType = CommandType.Text;
 
-            if (isStoredProcedure == true)
+            if (isStoredProcedure)
             {
                 commandType = CommandType.StoredProcedure;
             }
