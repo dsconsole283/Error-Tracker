@@ -30,99 +30,99 @@ namespace SlotErrorTrackerLibrary.Data
         public async Task<List<ManufacturerModel>> GetManufacturers()
         {
             return await _db.LoadDataAsync<ManufacturerModel, dynamic>("dbo.spGetManufacturers",
-                                                            new { },
-                                                            _connectionString,
-                                                            true);
+                                                                       new { },
+                                                                       _connectionString,
+                                                                       true);
         }
 
         public async Task CreateCabinetByManufacturer(string cabinet,
-                                                string manufacturer)
+                                                      string manufacturer)
         {
             await _db.SaveDataAsync("dbo.spCreateCabinetByManufacturer",
-                          new
-                          {
-                              Cabinet = cabinet.ToUpper(),
-                              Manufacturer = manufacturer.ToUpper()
-                          },
-                          _connectionString,
-                          true);
+                                    new
+                                    {
+                                        Cabinet = cabinet.ToUpper(),
+                                        Manufacturer = manufacturer.ToUpper()
+                                    },
+                                    _connectionString,
+                                    true);
         }
 
         public async Task CreateErrorDescriptionByCabinet(string description,
-                                                    string cabinet)
+                                                          string cabinet)
         {
             await _db.SaveDataAsync("dbo.spCreateEDByCabinet",
-                          new
-                          {
-                              Description = description,
-                              Cabinet = cabinet.ToUpper()
-                          },
-                          _connectionString,
-                          true);
+                                    new
+                                    {
+                                        Description = description,
+                                        Cabinet = cabinet.ToUpper()
+                                    },
+                                    _connectionString,
+                                    true);
         }
 
         public async Task CreateSolutionByErrorDescription(string solution,
-                                                     string description,
-                                                     string cabinet)
+                                                           string description,
+                                                           string cabinet)
         {
             await _db.SaveDataAsync("dbo.spCreateSolutionByED",
-                         new
-                         {
-                             Solution = solution,
-                             Description = description,
-                             Cabinet = cabinet.ToUpper()
-                         },
-                         _connectionString,
-                         true);
+                                    new
+                                    {
+                                        Solution = solution,
+                                        Description = description,
+                                        Cabinet = cabinet.ToUpper()
+                                    },
+                                    _connectionString,
+                                    true);
         }
 
         public async Task<List<CabinetPlatformModel>> GetCabinetsByManufacturer(string manufacturer)
         {
             return await _db.LoadDataAsync<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
-                                                                new
-                                                                {
-                                                                    Manufacturer = manufacturer.ToUpper()
-                                                                },
-                                                                _connectionString,
-                                                                true);
+                                                                          new
+                                                                          {
+                                                                              Manufacturer = manufacturer.ToUpper()
+                                                                          },
+                                                                          _connectionString,
+                                                                          true);
         }
 
         public async Task<List<ErrorModel>> GetErrorsByCabinet(string cabinet)
         {
             return await _db.LoadDataAsync<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
-                                                     new
-                                                     {
-                                                         Cabinet = cabinet.ToUpper()
-                                                     },
-                                                     _connectionString,
-                                                     true);
+                                                                new
+                                                                {
+                                                                    Cabinet = cabinet.ToUpper()
+                                                                },
+                                                                _connectionString,
+                                                                true);
         }
 
         public async Task<List<SolutionModel>> GetSolutionsByErrorDescription(string description,
-                                                                  string cabinet)
+                                                                              string cabinet)
         {
             return await _db.LoadDataAsync<SolutionModel, dynamic>("dbo.spGetSolutionByErrorDescription",
-                                                        new { Description = description, Cabinet = cabinet },
-                                                        _connectionString,
-                                                        true);
+                                                                   new { Description = description, Cabinet = cabinet },
+                                                                   _connectionString,
+                                                                   true);
         }
 
         public async Task CreateManufacturer(string manufacturer)
         {
             await _db.SaveDataAsync("dbo.spCreateManufacturer",
-                         new { Manufacturer = manufacturer.ToUpper() },
-                         _connectionString,
-                         true);
+                                    new { Manufacturer = manufacturer.ToUpper() },
+                                    _connectionString,
+                                    true);
         }
 
         public async Task UpdateExistingErrorDescriptionByCabinet(string cabinet,
-                                                            string errorDescription)
+                                                                  string errorDescription)
         {
             throw new NotImplementedException();
         }
 
         public async Task UpdateExistingPotentialSolutionByErrorDesc(string potentialSolution,
-                                                               string errorDescription)
+                                                                     string errorDescription)
         {
             throw new NotImplementedException();
         }
