@@ -38,10 +38,10 @@ namespace SlotErrorTrackerLibrary.Data
                                                 string manufacturer)
         {
             _db.SaveData("dbo.spCreateCabinetByManufacturer",
-                          new 
-                          { 
-                              Cabinet = cabinet.ToUpper(), 
-                              Manufacturer = manufacturer.ToUpper() 
+                          new
+                          {
+                              Cabinet = cabinet.ToUpper(),
+                              Manufacturer = manufacturer.ToUpper()
                           },
                           _connectionString,
                           true);
@@ -51,10 +51,10 @@ namespace SlotErrorTrackerLibrary.Data
                                                     string cabinet)
         {
             _db.SaveData("dbo.spCreateEDByCabinet",
-                         new 
-                         { 
-                             Description = description, 
-                             Cabinet = cabinet.ToUpper() 
+                         new
+                         {
+                             Description = description,
+                             Cabinet = cabinet.ToUpper()
                          },
                          _connectionString,
                          true);
@@ -65,11 +65,11 @@ namespace SlotErrorTrackerLibrary.Data
                                                      string cabinet)
         {
             _db.SaveData("dbo.spCreateSolutionByED",
-                         new 
-                         { 
-                             Solution = solution, 
-                             Description = description, 
-                             Cabinet = cabinet.ToUpper() 
+                         new
+                         {
+                             Solution = solution,
+                             Description = description,
+                             Cabinet = cabinet.ToUpper()
                          },
                          _connectionString,
                          true);
@@ -78,9 +78,9 @@ namespace SlotErrorTrackerLibrary.Data
         public List<CabinetPlatformModel> GetCabinetsByManufacturer(string manufacturer)
         {
             return _db.LoadData<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
-                                                                new 
-                                                                { 
-                                                                    Manufacturer = manufacturer.ToUpper() 
+                                                                new
+                                                                {
+                                                                    Manufacturer = manufacturer.ToUpper()
                                                                 },
                                                                 _connectionString,
                                                                 true);
@@ -89,9 +89,9 @@ namespace SlotErrorTrackerLibrary.Data
         public List<ErrorModel> GetErrorsByCabinet(string cabinet)
         {
             return _db.LoadData<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
-                                                     new 
-                                                     { 
-                                                         Cabinet = cabinet.ToUpper() 
+                                                     new
+                                                     {
+                                                         Cabinet = cabinet.ToUpper()
                                                      },
                                                      _connectionString,
                                                      true);
@@ -114,70 +114,6 @@ namespace SlotErrorTrackerLibrary.Data
                          true);
         }
 
-        //public void CreateErrorDescription(string errorDescription)
-        //{
-        //    _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
-        //}
-
-        //public void CreatePotentialSolution(string potentialSolution)
-        //{
-        //    _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, _connectionString, true);
-        //}
-
-        public void DeleteManufacturer(string manufacturer)
-        {
-            //Must delete all associated cabinets and update link tables as well
-            throw new NotImplementedException();
-        }
-
-        public void DeleteCabinetByManufacturer(string cabinet,
-                                                string manufacturer)
-        {
-            //Must update error description link table as well
-            throw new NotImplementedException();
-        }
-
-        public void DeleteErrorDescription(string errorDescription)
-        {
-            //Must update link table as well
-            throw new NotImplementedException();
-        }
-
-        public void AssignExistingErrorDescToCabinet(string cabinet,
-                                                     string errorDescription)
-        {
-            throw new NotImplementedException();
-        }
-        public void AssignExistingSolutionToErrorDesc(string potentialSolution,
-                                                     string errorDescription)
-        {
-            throw new NotImplementedException();
-        }
-        public void DeleteErrorDescriptionByCabinet(string cabinet,
-                                                    string errorDescription)
-        {
-            //Must update link tables as well
-            throw new NotImplementedException();
-        }
-
-        public void DeletePotentialSolutionByErrorDesc(string potentialSolution,
-                                                       string errorDescription)
-        {
-            //Must update link tables as well
-            throw new NotImplementedException();
-        }
-
-        public void UpdateExistingManufacturer(string manufacturer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateExistingCabinetByManufacturer(string cabinet,
-                                                        string manufacturer)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateExistingErrorDescriptionByCabinet(string cabinet,
                                                             string errorDescription)
         {
@@ -189,15 +125,68 @@ namespace SlotErrorTrackerLibrary.Data
         {
             throw new NotImplementedException();
         }
-
-        public void UpdateExistingErrorDescription(string errorDescription)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateExistingPotentialSolution(string potentialSolution)
-        {
-            throw new NotImplementedException();
-        }
+        //public void CreateErrorDescription(string errorDescription)
+        //{
+        //    _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
+        //}
+        //public void CreatePotentialSolution(string potentialSolution)
+        //{
+        //    _db.SaveData("dbo.spCreatePotentialSolution", new { potentialSolution }, _connectionString, true);
+        //}
+        //public void DeleteManufacturer(string manufacturer)
+        //{
+        //    //Must delete all associated cabinets and update link tables as well
+        //    throw new NotImplementedException();
+        //}
+        //public void DeleteCabinetByManufacturer(string cabinet,
+        //                                        string manufacturer)
+        //{
+        //    //Must update error description link table as well
+        //    throw new NotImplementedException();
+        //}
+        //public void DeleteErrorDescription(string errorDescription)
+        //{
+        //    //Must update link table as well
+        //    throw new NotImplementedException();
+        //}
+        //public void AssignExistingErrorDescToCabinet(string cabinet,
+        //                                             string errorDescription)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public void AssignExistingSolutionToErrorDesc(string potentialSolution,
+        //                                             string errorDescription)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public void DeleteErrorDescriptionByCabinet(string cabinet,
+        //                                            string errorDescription)
+        //{
+        //    //Must update link tables as well
+        //    throw new NotImplementedException();
+        //}
+        //public void DeletePotentialSolutionByErrorDesc(string potentialSolution,
+        //                                               string errorDescription)
+        //{
+        //    //Must update link tables as well
+        //    throw new NotImplementedException();
+        //}
+        //public void UpdateExistingManufacturer(string manufacturer)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public void UpdateExistingCabinetByManufacturer(string cabinet,
+        //                                                string manufacturer)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public void UpdateExistingErrorDescription(string errorDescription)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public void UpdateExistingPotentialSolution(string potentialSolution)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
