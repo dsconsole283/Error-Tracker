@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SlotErrorTrackerLibrary\SlotErrorTrackerLibrary.csproj" />
   </ItemGroup>
 
@@ -25,6 +21,10 @@
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\ServiceDependencies\" />
     <Folder Include="Properties\ServiceDependencies\InspectedByLeoAPI - Web Deploy\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
 </Project>
