@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\ServiceDependencies\" />
+    <Folder Include="Properties\ServiceDependencies\InspectedByLeoAPI - Web Deploy\" />
   </ItemGroup>
 
 </Project>
