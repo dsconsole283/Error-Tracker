@@ -60,7 +60,9 @@ namespace SlotErrorTrackerLibrary.Properties {
             }
         }
         
-        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PotentialSolutionsDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False.
+        /// </summary>
         internal static string DefaultConnection {
             get {
                 return ResourceManager.GetString("DefaultConnection", resourceCulture);

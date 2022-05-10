@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotErrorTrackerLibrary.Tes
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PotentialSolutionsDB", "PotentialSolutionsDB\PotentialSolutionsDB.sqlproj", "{184E2215-7DA7-4CE7-86DE-691FAB204D4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorTrackerAPI", "ErrorTrackerAPI\ErrorTrackerAPI.csproj", "{4DBFFC6D-1641-4334-9168-6520998F4EBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LEO.API", "LEO.API\LEO.API.csproj", "{4892AD1B-E859-4A61-A930-5CAEDEE5444E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,10 @@ Global
 		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{184E2215-7DA7-4CE7-86DE-691FAB204D4A}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{4DBFFC6D-1641-4334-9168-6520998F4EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DBFFC6D-1641-4334-9168-6520998F4EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DBFFC6D-1641-4334-9168-6520998F4EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DBFFC6D-1641-4334-9168-6520998F4EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4892AD1B-E859-4A61-A930-5CAEDEE5444E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4892AD1B-E859-4A61-A930-5CAEDEE5444E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4892AD1B-E859-4A61-A930-5CAEDEE5444E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4892AD1B-E859-4A61-A930-5CAEDEE5444E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
