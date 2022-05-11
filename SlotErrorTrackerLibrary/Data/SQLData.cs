@@ -21,9 +21,8 @@ namespace SlotErrorTrackerLibrary.Data
         }
         public void SetConnectionString()
         {
-            var resources = Properties.Resources.ResourceManager;
             string output = "";
-            output = resources.GetString("DefaultConnection");
+            output = _configuration.GetConnectionString("DefaultConnection");
             _connectionString = output;
         }
 
