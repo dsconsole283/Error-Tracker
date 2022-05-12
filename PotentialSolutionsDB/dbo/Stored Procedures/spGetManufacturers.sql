@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spGetManufacturers]
 	
 AS
-	SELECT *
+	SELECT Manufacturer
 	FROM dbo.Manufacturers
+	ORDER BY Manufacturer ASC

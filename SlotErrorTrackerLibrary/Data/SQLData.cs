@@ -26,7 +26,7 @@ namespace SlotErrorTrackerLibrary.Data
             _connectionString = output;
         }
 
-        public async Task<List<ManufacturerModel>> GetManufacturers()
+        public async Task<List<ManufacturerModel>> GetManufacturersAsync()
         {
             return await _db.LoadDataAsync<ManufacturerModel, dynamic>("dbo.spGetManufacturers",
                                                                        new { },
@@ -34,7 +34,7 @@ namespace SlotErrorTrackerLibrary.Data
                                                                        true);
         }
 
-        public async Task CreateCabinetByManufacturer(string cabinet,
+        public async Task CreateCabinetByManufacturerAsync(string cabinet,
                                                       string manufacturer)
         {
             await _db.SaveDataAsync("dbo.spCreateCabinetByManufacturer",
@@ -47,7 +47,7 @@ namespace SlotErrorTrackerLibrary.Data
                                     true);
         }
 
-        public async Task CreateErrorDescriptionByCabinet(string description,
+        public async Task CreateErrorDescriptionByCabinetAsync(string description,
                                                           string cabinet)
         {
             await _db.SaveDataAsync("dbo.spCreateEDByCabinet",
@@ -60,7 +60,7 @@ namespace SlotErrorTrackerLibrary.Data
                                     true);
         }
 
-        public async Task CreateSolutionByErrorDescription(string solution,
+        public async Task CreateSolutionByErrorDescriptionAsync(string solution,
                                                            string description,
                                                            string cabinet)
         {
@@ -75,7 +75,7 @@ namespace SlotErrorTrackerLibrary.Data
                                     true);
         }
 
-        public async Task<List<CabinetPlatformModel>> GetCabinetsByManufacturer(string manufacturer)
+        public async Task<List<CabinetPlatformModel>> GetCabinetsByManufacturerAsync(string manufacturer)
         {
             return await _db.LoadDataAsync<CabinetPlatformModel, dynamic>("dbo.spGetCabinetsByManufacturer",
                                                                           new
@@ -86,7 +86,7 @@ namespace SlotErrorTrackerLibrary.Data
                                                                           true);
         }
 
-        public async Task<List<ErrorModel>> GetErrorsByCabinet(string cabinet)
+        public async Task<List<ErrorModel>> GetErrorsByCabinetAsync(string cabinet)
         {
             return await _db.LoadDataAsync<ErrorModel, dynamic>("dbo.spGetErrorsByCabinet",
                                                                 new
@@ -97,7 +97,7 @@ namespace SlotErrorTrackerLibrary.Data
                                                                 true);
         }
 
-        public async Task<List<SolutionModel>> GetSolutionsByErrorDescription(string description,
+        public async Task<List<SolutionModel>> GetSolutionsByErrorDescriptionAsync(string description,
                                                                               string cabinet)
         {
             return await _db.LoadDataAsync<SolutionModel, dynamic>("dbo.spGetSolutionByErrorDescription",
@@ -106,7 +106,7 @@ namespace SlotErrorTrackerLibrary.Data
                                                                    true);
         }
 
-        public async Task CreateManufacturer(string manufacturer)
+        public async Task CreateManufacturerAsync(string manufacturer)
         {
             await _db.SaveDataAsync("dbo.spCreateManufacturer",
                                     new { Manufacturer = manufacturer.ToUpper() },
@@ -114,17 +114,35 @@ namespace SlotErrorTrackerLibrary.Data
                                     true);
         }
 
-        public async Task UpdateExistingErrorDescriptionByCabinet(string cabinet,
+        public async Task UpdateExistingErrorDescriptionByCabinetAsync(string cabinet,
                                                                   string errorDescription)
         {
             throw new NotImplementedException();
         }
 
-        public async Task UpdateExistingPotentialSolutionByErrorDesc(string potentialSolution,
+        public async Task UpdateExistingPotentialSolutionByErrorDescAsync(string potentialSolution,
                                                                      string errorDescription)
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<ErrorModel>> GetAllErrorsAsync()
+        {
+            return await _db.LoadDataAsync<ErrorModel, dynamic>("dbo.spGetAllErrors",
+                                                                       new { },
+                                                                       _connectionString,
+                                                                       true);
+        }
+
+        public async Task<List<SolutionModel>> GetAllSolutionsAsync()
+        {
+            return await _db.LoadDataAsync<SolutionModel, dynamic>("dbo.spGetAllSolutions",
+                                                                       new { },
+                                                                       _connectionString,
+                                                                       true);
+        }
+
+
         //public void CreateErrorDescription(string errorDescription)
         //{
         //    _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);

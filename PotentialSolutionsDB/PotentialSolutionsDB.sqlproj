@@ -139,8 +139,11 @@
     <Build Include="dbo\Stored Procedures\spGetManufacturers.sql" />
     <Build Include="dbo\Stored Procedures\spGetSolutionByErrorDescription.sql" />
     <Build Include="Security\Permissions.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllErrors.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllSolutions.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PotentialSolutionsDB.publish.xml" />
+    <None Include="PotentialSolutionsDBLocal.publish.xml" />
   </ItemGroup>
 </Project>

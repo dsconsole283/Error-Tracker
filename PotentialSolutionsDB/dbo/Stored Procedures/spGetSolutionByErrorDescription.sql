@@ -15,4 +15,5 @@ SET NOCOUNT ON
 			(SELECT Id FROM dbo.ErrorDescriptions WHERE Description = @Description)
 	AND
 		cp.Id =
-			(SELECT Id FROM dbo.Cabinet_Platform WHERE Cabinet = @Cabinet);
+			(SELECT Id FROM dbo.Cabinet_Platform WHERE Cabinet = @Cabinet)
+			ORDER BY Solution ASC

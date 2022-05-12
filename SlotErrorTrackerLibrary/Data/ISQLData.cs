@@ -6,16 +6,18 @@ namespace SlotErrorTrackerLibrary.Data
 {
     public interface ISQLData
     {
-        Task CreateCabinetByManufacturer(string cabinet, string manufacturer);
-        Task CreateErrorDescriptionByCabinet(string description, string cabinet);
-        Task CreateManufacturer(string manufacturer);
-        Task CreateSolutionByErrorDescription(string solution, string description, string cabinet);
-        Task<List<CabinetPlatformModel>> GetCabinetsByManufacturer(string manufacturer);
-        Task<List<ErrorModel>> GetErrorsByCabinet(string cabinet);
-        Task<List<ManufacturerModel>> GetManufacturers();
-        Task<List<SolutionModel>> GetSolutionsByErrorDescription(string description, string cabinet);
+        Task CreateCabinetByManufacturerAsync(string cabinet, string manufacturer);
+        Task CreateErrorDescriptionByCabinetAsync(string description, string cabinet);
+        Task CreateManufacturerAsync(string manufacturer);
+        Task CreateSolutionByErrorDescriptionAsync(string solution, string description, string cabinet);
+        Task<List<CabinetPlatformModel>> GetCabinetsByManufacturerAsync(string manufacturer);
+        Task<List<ErrorModel>> GetErrorsByCabinetAsync(string cabinet);
+        Task<List<ManufacturerModel>> GetManufacturersAsync();
+        Task<List<SolutionModel>> GetSolutionsByErrorDescriptionAsync(string description, string cabinet);
         void SetConnectionString();
-        Task UpdateExistingErrorDescriptionByCabinet(string cabinet, string errorDescription);
-        Task UpdateExistingPotentialSolutionByErrorDesc(string potentialSolution, string errorDescription);
+        Task UpdateExistingErrorDescriptionByCabinetAsync(string cabinet, string errorDescription);
+        Task UpdateExistingPotentialSolutionByErrorDescAsync(string potentialSolution, string errorDescription);
+        Task<List<SolutionModel>> GetAllSolutionsAsync();
+        Task<List<ErrorModel>> GetAllErrorsAsync();
     }
 }
