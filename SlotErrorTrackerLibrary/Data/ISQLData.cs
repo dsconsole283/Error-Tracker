@@ -15,8 +15,6 @@ namespace SlotErrorTrackerLibrary.Data
         Task<List<ManufacturerModel>> GetManufacturersAsync();
         Task<List<SolutionModel>> GetSolutionsByErrorDescriptionAsync(string description, string cabinet);
         void SetConnectionString();
-        Task UpdateExistingErrorDescriptionByCabinetAsync(string cabinet, string errorDescription);
-        Task UpdateExistingPotentialSolutionByErrorDescAsync(string potentialSolution, string errorDescription);
         Task<List<SolutionModel>> GetAllSolutionsAsync();
         Task<List<ErrorModel>> GetAllErrorsAsync();
     }

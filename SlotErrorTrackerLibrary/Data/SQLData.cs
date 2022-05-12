@@ -114,17 +114,6 @@ namespace SlotErrorTrackerLibrary.Data
                                     true);
         }
 
-        public async Task UpdateExistingErrorDescriptionByCabinetAsync(string cabinet,
-                                                                  string errorDescription)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task UpdateExistingPotentialSolutionByErrorDescAsync(string potentialSolution,
-                                                                     string errorDescription)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<List<ErrorModel>> GetAllErrorsAsync()
         {
@@ -142,7 +131,16 @@ namespace SlotErrorTrackerLibrary.Data
                                                                        true);
         }
 
-
+        //public async Task UpdateExistingErrorDescriptionByCabinetAsync(string cabinet,
+        //                                                          string errorDescription)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public async Task UpdateExistingPotentialSolutionByErrorDescAsync(string potentialSolution,
+        //                                                             string errorDescription)
+        //{
+        //    throw new NotImplementedException();
+        //}
         //public void CreateErrorDescription(string errorDescription)
         //{
         //    _db.SaveData("dbo.spCreateErrorDescription", new { errorDescription }, _connectionString, true);
