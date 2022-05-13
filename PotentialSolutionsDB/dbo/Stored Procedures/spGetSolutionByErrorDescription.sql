@@ -5,7 +5,7 @@ AS
 
 SET NOCOUNT ON
 
-	SELECT Solution
+	SELECT Solution, CreatedDate
 	FROM dbo.PotentialSolutions AS ps
 	INNER JOIN dbo.Error_Solution_Link AS esl ON esl.SolutionId = ps.Id
 	INNER JOIN dbo.ErrorDescriptions AS ed ON ed.Id = esl.ErrorId

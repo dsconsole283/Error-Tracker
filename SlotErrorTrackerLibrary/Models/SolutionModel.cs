@@ -7,6 +7,6 @@ namespace SlotErrorTrackerLibrary.Models
     public class SolutionModel
     {
         public string Solution { get; set; }
-
+        public DateTime CreatedDate { get; set; }
     }
 }
