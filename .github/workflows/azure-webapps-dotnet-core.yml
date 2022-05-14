@@ -51,7 +51,7 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build .\LEO\LEO.API\LEO.API.csproj -c Release --no-restore
+        run: dotnet build D:\VSProjects\LEO\LEO.API\LEO.API.csproj -c Release --no-restore
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
