@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: drop
-          path: '$(System.DefaultWorkingDirectory)'
+          path: $(System.DefaultWorkingDirectory)
 
   deploy:
     runs-on: windows-latest
@@ -73,7 +73,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: drop
-          path: '$(System.DefaultWorkingDirectory)'
+          path: $(System.DefaultWorkingDirectory)
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
