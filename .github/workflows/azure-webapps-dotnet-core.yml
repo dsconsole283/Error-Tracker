@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: drop
-          path: ${{ env.DOTNET_ROOT }}/myapp
+          path: ${{ env.DOTNET_ROOT }}\myapp
   deploy:
     runs-on: windows-latest
     needs: build
@@ -73,7 +73,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: drop
-          path: ${{ env.DOTNET_ROOT }}/myapp
+          path: ${{ env.DOTNET_ROOT }}\myapp
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
