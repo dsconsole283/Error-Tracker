@@ -58,8 +58,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: leo-package
-          path: D:\a\LEO\LEO\publish
+          name: drop
+          path: '$(System.DefaultWorkingDirectory)'
 
   deploy:
     runs-on: windows-latest
@@ -72,8 +72,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: leo-package
-          path: D:\a\LEO\LEO\publish
+          name: drop
+          path: '$(System.DefaultWorkingDirectory)'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -81,4 +81,4 @@ jobs:
         with:
            app-name: 'LEO-API'
            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-           package: leo-package
+           package: $(System.DefaultWorkingDirectory)/**/*.zip  
