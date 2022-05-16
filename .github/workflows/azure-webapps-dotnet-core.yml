@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: drop
-          path: ${{ env.DOTNET_ROOT }}/LEO-API
+          path: ${{ env.DOTNET_ROOT }}/
   deploy:
     runs-on: windows-latest
     needs: build
@@ -73,7 +73,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: drop
-          path: ${{ env.DOTNET_ROOT }}/LEO-API
+          path: ${{ env.DOTNET_ROOT }}/
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
