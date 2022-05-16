@@ -21,6 +21,7 @@ name: Build and deploy ASP.Net Core app to an Azure Web App
 
 env:
   AZURE_WEBAPP_NAME: LEO-API    # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '$(System.DefaultWorkingDirectory)'
   DOTNET_VERSION: '6.x'                 # set this to the .NET Core version to use
 
 on:
@@ -72,7 +73,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: drop
-          path: ${{ System.DefaultWorkingDirectory }}
+          path: ${{ AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -80,4 +81,4 @@ jobs:
         with:
            app-name: 'LEO-API'
            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-           package: ${{ System.DefaultWorkingDirectory }}/**/*.zip  
+           package: ${{ AZURE_WEBAPP_PACKAGE_PATH }}/**/*.zip  
