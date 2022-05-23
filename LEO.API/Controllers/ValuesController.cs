@@ -15,7 +15,7 @@ namespace ErrorTrackerAPI.Controllers
             this.data = data;
         }
 
-        [Route("/Get Manufacturers")]
+        [Route("/GetManufacturers")]
         [HttpGet]
         public async Task<List<ManufacturerModel>> GetManufacturersAsync()
         {
@@ -23,7 +23,7 @@ namespace ErrorTrackerAPI.Controllers
             return manufacturers;
         }
 
-        [Route("/Get Errors By Cabinet")]
+        [Route("/GetErrorsByCabinet")]
         [HttpGet]
         public async Task<List<ErrorModel>> GetErrorsByCabinetAsync(string cabinet)
         {
@@ -31,7 +31,7 @@ namespace ErrorTrackerAPI.Controllers
             return errors;
         }
 
-        [Route("/Get Cabinets By Manufacturer")]
+        [Route("/GetCabinetsByManufacturer")]
         [HttpGet]
         public async Task<List<CabinetPlatformModel>> GetCabinetsByManufacturerAsync(string manufacturer)
         {
@@ -39,7 +39,7 @@ namespace ErrorTrackerAPI.Controllers
             return cabinets;
         }
 
-        [Route("/Get Solution By Error Description")]
+        [Route("/GetSolutionByErrorDescription")]
         [HttpGet]
         public async Task<List<SolutionModel>> GetSolutionByErrorDescriptionAsync(string ed, string cabinet)
         {
@@ -47,7 +47,7 @@ namespace ErrorTrackerAPI.Controllers
             return solutions;
         }
 
-        [Route("/Get All Errors")]
+        [Route("/GetAllErrors")]
         [HttpGet]
         public async Task<List<ErrorModel>> GetAllErrorsAsync()
         {
@@ -55,7 +55,7 @@ namespace ErrorTrackerAPI.Controllers
             return errors;
         }
 
-        [Route("/Get All Solutions")]
+        [Route("/GetAllSolutions")]
         [HttpGet]
         public async Task<List<SolutionModel>> GetAllSolutionsAsync()
         {
@@ -63,28 +63,28 @@ namespace ErrorTrackerAPI.Controllers
             return solutions;
         }
 
-        [Route("/Create Cabinet By Manufacturer")]
+        [Route("/CreateCabinetByManufacturer")]
         [HttpPost]
         public async Task CreateCabinetByManufacturerAsync(string cabinet, string manufacturer)
         {
             await data.CreateCabinetByManufacturerAsync(cabinet, manufacturer);
         }
 
-        [Route("/Create Error Description By Cabinet")]
+        [Route("/CreateErrorDescriptionByCabinet")]
         [HttpPost]
         public async Task CreateEDByCabinetAsync(string ed, string cabinet)
         {
             await data.CreateErrorDescriptionByCabinetAsync(ed, cabinet);
         }
 
-        [Route("/Create Manufacturer")]
+        [Route("/CreateManufacturer")]
         [HttpPost]
         public async Task CreateManufacturerAsync(string manufacturer)
         {
             await data.CreateManufacturerAsync(manufacturer);
         }
 
-        [Route("/Create Solution By Error Description")]
+        [Route("/CreateSolutionByErrorDescription")]
         [HttpPost]
         public async Task CreateSolutionByEDAsync(string solution, string ed, string cabinet)
         {
